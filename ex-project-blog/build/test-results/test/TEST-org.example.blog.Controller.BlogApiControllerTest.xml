@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.example.blog.Controller.BlogApiControllerTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2024-03-29T12:23:05" hostname="userui-MacBookPro.local" time="0.492">
+  <properties/>
+  <testcase name="findAllArticles: 블로그 글 전체 조회." classname="org.example.blog.Controller.BlogApiControllerTest" time="0.384"/>
+  <testcase name="addArticle: 블로그 글 추가." classname="org.example.blog.Controller.BlogApiControllerTest" time="0.107"/>
+  <system-out><![CDATA[21:23:02.924 [Test worker] DEBUG org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Neither @ContextConfiguration nor @ContextHierarchy found for test class [BlogApiControllerTest]: using SpringBootContextLoader
+21:23:02.928 [Test worker] DEBUG org.springframework.test.context.support.AbstractContextLoader - Could not detect default resource locations for test class [org.example.blog.Controller.BlogApiControllerTest]: no resource found for suffixes {-context.xml, Context.groovy}.
+21:23:02.928 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [org.example.blog.Controller.BlogApiControllerTest]: BlogApiControllerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+21:23:02.957 [Test worker] DEBUG org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Using ContextCustomizers for test class [BlogApiControllerTest]: [DisableObservabilityContextCustomizer, PropertyMappingContextCustomizer, Customizer, ImportsContextCustomizer, ExcludeFilterContextCustomizer, DuplicateJsonObjectContextCustomizer, MockitoContextCustomizer, TestRestTemplateContextCustomizer]
+21:23:03.025 [Test worker] DEBUG org.springframework.context.annotation.ClassPathScanningCandidateComponentProvider - Identified candidate component class: file [/Users/user/Desktop/workspace/spring-project/ex-project-blog/build/classes/java/main/org/example/blog/BlogApplication.class]
+21:23:03.026 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration org.example.blog.BlogApplication for test class org.example.blog.Controller.BlogApiControllerTest
+21:23:03.100 [Test worker] DEBUG org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Using TestExecutionListeners for test class [BlogApiControllerTest]: [ServletTestExecutionListener, DirtiesContextBeforeModesTestExecutionListener, ApplicationEventsTestExecutionListener, MockitoTestExecutionListener, DependencyInjectionTestExecutionListener, DirtiesContextTestExecutionListener, TransactionalTestExecutionListener, SqlScriptsTestExecutionListener, EventPublishingTestExecutionListener, RestDocsTestExecutionListener, MockRestServiceServerResetTestExecutionListener, MockMvcPrintOnlyOnFailureTestExecutionListener, WebDriverTestExecutionListener, MockWebServiceServerTestExecutionListener, ResetMocksTestExecutionListener]
+21:23:03.101 [Test worker] DEBUG org.springframework.test.context.support.AbstractDirtiesContextTestExecutionListener - Before test class: class [BlogApiControllerTest], class annotated with @DirtiesContext [false] with mode [null]
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v3.0.2)
+
+2024-03-29T21:23:03.402+09:00  INFO 21038 --- [    Test worker] o.e.b.Controller.BlogApiControllerTest   : Starting BlogApiControllerTest using Java 17.0.10 with PID 21038 (started by user in /Users/user/Desktop/workspace/spring-project/ex-project-blog)
+2024-03-29T21:23:03.404+09:00  INFO 21038 --- [    Test worker] o.e.b.Controller.BlogApiControllerTest   : No active profile set, falling back to 1 default profile: "default"
+2024-03-29T21:23:03.884+09:00  INFO 21038 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-03-29T21:23:03.926+09:00  INFO 21038 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 35 ms. Found 1 JPA repository interfaces.
+2024-03-29T21:23:04.219+09:00  INFO 21038 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-03-29T21:23:04.376+09:00  INFO 21038 --- [    Test worker] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:testdb user=SA
+2024-03-29T21:23:04.377+09:00  INFO 21038 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-03-29T21:23:04.419+09:00  INFO 21038 --- [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-03-29T21:23:04.459+09:00  INFO 21038 --- [    Test worker] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.1.6.Final
+2024-03-29T21:23:04.582+09:00  WARN 21038 --- [    Test worker] org.hibernate.orm.deprecation            : HHH90000021: Encountered deprecated setting [javax.persistence.sharedCache.mode], use [jakarta.persistence.sharedCache.mode] instead
+2024-03-29T21:23:04.686+09:00  INFO 21038 --- [    Test worker] SQL dialect                              : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+Hibernate: 
+    
+    drop table if exists article cascade 
+Hibernate: 
+    
+    create table article (
+       id bigint generated by default as identity,
+        content varchar(255) not null,
+        title varchar(255) not null,
+        primary key (id)
+    )
+2024-03-29T21:23:05.221+09:00  INFO 21038 --- [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2024-03-29T21:23:05.228+09:00  INFO 21038 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-03-29T21:23:05.529+09:00  WARN 21038 --- [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-03-29T21:23:05.751+09:00  INFO 21038 --- [    Test worker] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:testdb'
+2024-03-29T21:23:05.795+09:00  INFO 21038 --- [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2024-03-29T21:23:05.796+09:00  INFO 21038 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2024-03-29T21:23:05.799+09:00  INFO 21038 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2024-03-29T21:23:05.824+09:00  INFO 21038 --- [    Test worker] o.e.b.Controller.BlogApiControllerTest   : Started BlogApiControllerTest in 2.683 seconds (process running for 3.542)
+2024-03-29T21:23:05.966+09:00  INFO 21038 --- [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2024-03-29T21:23:05.966+09:00  INFO 21038 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2024-03-29T21:23:05.966+09:00  INFO 21038 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
+Hibernate: 
+    select
+        a1_0.id,
+        a1_0.content,
+        a1_0.title 
+    from
+        article a1_0
+Hibernate: 
+    insert 
+    into
+        article
+        (id, content, title) 
+    values
+        (default, ?, ?)
+Hibernate: 
+    select
+        a1_0.id,
+        a1_0.content,
+        a1_0.title 
+    from
+        article a1_0
+2024-03-29T21:23:06.227+09:00  INFO 21038 --- [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2024-03-29T21:23:06.228+09:00  INFO 21038 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2024-03-29T21:23:06.229+09:00  INFO 21038 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+Hibernate: 
+    select
+        a1_0.id,
+        a1_0.content,
+        a1_0.title 
+    from
+        article a1_0
+Hibernate: 
+    delete 
+    from
+        article 
+    where
+        id=?
+Hibernate: 
+    insert 
+    into
+        article
+        (id, content, title) 
+    values
+        (default, ?, ?)
+Hibernate: 
+    select
+        a1_0.id,
+        a1_0.content,
+        a1_0.title 
+    from
+        article a1_0
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
